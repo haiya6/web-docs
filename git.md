@@ -33,5 +33,3 @@
 + `git push origin --tags` 推送全部未推送过的本地标签
 + `git tag -d <tagname>` 删除一个本地标签
 + `git push origin :refs/tags/<tagname>` 删除一个远程标签
-
-+ 测试
