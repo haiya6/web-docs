@@ -211,7 +211,7 @@ Page({
 
 13. 使用`===`代替`==`判断。
 
-13. 判断状态码的时候定义一个常量匹配，不要疯狂使用`wx:if`。
+14. 判断状态码的时候定义一个常量匹配，不要疯狂使用`wx:if`。
 
 bad
 ```wxml
@@ -228,16 +228,16 @@ const app = getApp()
 
 Page({
   data: {
-    ORDERSTATUS: ['', '待付款', '待发货', '待收货', '待评价']
+    ORDER_STATUS: ['', '待付款', '待发货', '待收货', '待评价']
   }
 })
 ```
 ```wxml
 <!-- in wxml -->
-<view>{{ORDERSTATUS[order.status]}}</view>
+<view>{{ORDER_STATUS[order.status]}}</view>
 ```
 
-14. 使用`JSON.parse`注意处理异常，该方法不是百分百成功。
+15. 使用`JSON.parse`注意处理异常，该方法不是百分百成功。
 
 ```js
 // bad 
