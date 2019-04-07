@@ -60,7 +60,7 @@
     const item = {};
     ```
 
-  - 用对象方法简写。
+  - 对象中方法使用简写。
 
     ```javascript
     // bad
@@ -126,26 +126,6 @@
     };
     ```
 
-  - 只对那些无效的标示使用引号 `''`。
-
-    > Why? 通常我们认为这种方式主观上易读。他优化了代码高亮，并且页更容易被许多JS引擎压缩。
-
-    ```javascript
-    // bad
-    const bad = {
-      'foo': 3,
-      'bar': 4,
-      'data-blah': 5,
-    };
-
-    // good
-    const good = {
-      foo: 3,
-      bar: 4,
-      'data-blah': 5,
-    };
-    ```
-
   - 不要直接调用`Object.prototype`上的方法，如`hasOwnProperty`, `propertyIsEnumerable`, `isPrototypeOf`。
 
     > Why? 在一些有问题的对象上， 这些方法可能会被屏蔽掉 - 如：`{ hasOwnProperty: false }` - 或这是一个空对象`Object.create(null)`
@@ -194,18 +174,6 @@
 
     // good
     const items = [];
-    ```
-
-  - 用[Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) 代替直接向数组中添加一个值。
-
-    ```javascript
-    const someStack = [];
-
-    // bad
-    someStack[someStack.length] = 'abracadabra';
-
-    // good
-    someStack.push('abracadabra');
     ```
 
   - 用扩展运算符做数组浅拷贝，类似上面的对象浅拷贝
@@ -743,6 +711,11 @@
     [1, 2, 3].map(number => (
       `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
     ));
+    
+    // good
+    [1, 2, 3].map((number) => {
+      return number * number
+    })
     ```
 
   - 避免箭头函数(`=>`)和比较操作符（`<=, >=`）混淆。
@@ -1030,19 +1003,6 @@
     import bar from 'bar';
 
     foo.init();
-    ```
-
-  - 在import语句里不允许Webpack loader语法
-    > Why? 一旦用Webpack语法在import里会把代码耦合到模块绑定器。最好是在`webpack.config.js`里写webpack loader语法
-
-    ```javascript
-    // bad
-    import fooSass from 'css!sass!foo.scss';
-    import barCss from 'style!css!bar.css';
-
-    // good
-    import fooSass from 'foo.scss';
-    import barCss from 'bar.css';
     ```
 
 ## 遍历器与Generator函数
@@ -2153,7 +2113,7 @@
     ];
     ```
 
-## 事件参数
+## 事件传参
 
   - 通过对象而不是原始值向事件装载数据时(不论是DOM事件还是像Backbone事件的很多属性)。 这使得后续的贡献者（程序员）想这个事件装载更多的数据时不用去找或者更新每个处理器。例如：
 
@@ -2171,7 +2131,7 @@
     prefer:
 
     ```javascript
-    // good
+    // good 将载荷封装成对象，方便后续添加
     $(this).trigger('listingUpdated', { listingId: listing.id });
 
     ...
