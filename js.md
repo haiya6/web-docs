@@ -34,7 +34,53 @@ typeof {} // 'object'
 typeof function () {} // 'function'
 ```
 
-+ 待完善
++ `instanceof`可以判断复杂数据类型，但不能正确的判断基本数据类型，例如：
+
+```js
+const arr = []
+console.log(arr instanceof Array) // true
+
+const obj = {}
+console.log(obj instanceof Object) // true
+
+const func = () => {}
+console.log(func instanceof Function) // true
+```
+`instanceof`是通过原型链来判断的，`A instanceof B`在A的原型链中查找，是否有原型（`A.__proto__`）等于`B.prototype`，如果一直找到`A`的原型链的顶端（`null`，即`Object.prototype.__proto__`）仍然不等于`B.prototype`返回`false`，否则`true`。  
+```js
+/**
+ * 简单实现 instanceof
+ * @param {左边} ins 
+ * @param {右边} c 
+ */
+const _instanceof = (ins, c) => {
+  let proto = ins.__proto__
+  while (proto) {
+    if(proto === c.prototype) {
+      return true
+    } else {
+      proto = proto.__proto__
+    }
+  }
+
+  return false
+}
+```
++ `Object.prototype.toString`准确判断各种类型
+
+```js
+const toString = Object.prototype.toString
+console.log(toString.call(undefined)) // [object Undefined]
+console.log(toString.call(true)) // [object Boolean]
+console.log(toString.call('zhangsan')) // [object String]
+console.log(toString.call(0)) // [object Number]
+console.log(toString.call(Symbol())) // [object Symbol]
+console.log(toString.call(null)) // [object Null]
+console.log(toString.call({})) // [object Object]
+console.log(toString.call([])) // [object Array]
+console.log(toString.call(function () { })) // [object Function]
+```
++ 另外一种判断基本数据类型和复杂数据类型方法https://github.com/YvetteLau/Blog/blob/master/JS/data-type.js
 
 ## `for of`, `for in`, `forEach`, `map`的区别
 
