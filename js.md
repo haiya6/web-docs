@@ -1,6 +1,6 @@
 # 原生JavaScript知识
 
-## js中数据类型
+## js中的数据类型
 + js中基本数据类型：`undefined`, `null`, `boolean`, `string`, `number`, `symbol`
 + 原始数据类型存储在栈内存中，存储的是具体的值
 + 复杂数据类型存储在堆内存中，存储的是地址值，所以在我们把一个指向对象的变量赋值给另一个变量的时候赋值的是对象在内存中的地址值，它们指向同一块内存空间，例如：
@@ -13,7 +13,7 @@ newObj.name = 'zhangsan'
 console.log(obj.name) // zhangsan
 ```
 
-## js判断各种数据类型
+## 数据类型判断
 + 首先`typeof`可以正确判断除`null`之外的基本数据类型，例如：
 
 ```js
