@@ -53,9 +53,9 @@
 
 + `git pull` 抓取远程仓库内容，此时可能会产生冲突，需要手动解决冲突
 
-+ `git checkout -b <branch-name> origin/<branch-name>` 在本地创建和远程分支对应的分支
++ `git checkout -b <branch-name> <remote-name>/<branch-name>` 在本地创建和远程分支对应的分支
 
-+ `git branch --set-upstream <branch-name> origin/<branch-name>` 建立本地分支和远程分支的关联
++ `git branch --set-upstream <branch-name> <remote-name>/<branch-name>` 建立本地分支和远程分支的关联
 
 + `git tag <tagname> <commit_id>` 创建一个标签，不指定<commit_id>默认为HEAD
 
@@ -63,10 +63,10 @@
 
 + `git tag -a <tagname> -m <message>` 指定标签的信息
 
-+ `git push origin <tagname>` 推送一个本地标签
++ `git push <remote-name> <tagname>` 推送一个本地标签
 
-+ `git push origin --tags` 推送全部未推送过的本地标签
++ `git push <remote-name> --tags` 推送全部未推送过的本地标签
 
 + `git tag -d <tagname>` 删除一个本地标签
 
-+ `git push origin :refs/tags/<tagname>` 删除一个远程标签
++ `git push <remote-name> :refs/tags/<tagname>` 删除一个远程标签
