@@ -8,9 +8,12 @@
 
 + `git commit -m <message>` 将暂存区文件提交到当前分支
 
-+ `git commit --amend` 修改上一次提交内容
++ `git commit --amend` 修改上一次提交内容，如果设置了`git`默认编辑器则会打开编辑上一次提交的信息，没有设置默认编辑器会尝试打开`vim`等编辑器
 
-+ `git status`查看当前仓库的状态，可以查看哪些文件被修改但还没提交
++ `git status` 查看当前仓库的状态：
+```
+git clone
+```
 
 + `git diff`查看具体被修改文件的具体修改内容
 
