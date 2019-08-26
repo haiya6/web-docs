@@ -2,6 +2,7 @@
 !> 需要准备一台能访问外网的服务器。
 
 1. 安装pip和shadowsocks服务
+
 ```
 yum install python-pip
 pip install shadowsocks
@@ -42,6 +43,7 @@ pip install shadowsocks
 ```
 
 3. 启动shadowsocks服务
+
 ```
 // 启动
 ssserver -c /etc/shadowsocks/ss_etc.json -d start
